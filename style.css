@@ -1,0 +1,225 @@
+/* -- Google Font & CSS Variables -- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #00d1b2; /* Teal accent */
+    --primary-hover: #00a38a;
+    --bg-dark: #00206a;      /* Main background */
+    --bg-light: #16739b;     /* Cards/Header background */
+    --text-light: #e0e0e0;
+    --text-dark: #121212;
+    --border-color: #333;
+}
+
+/* -- General Body Styles -- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* -- Reusable Container -- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* -- Header & Navigation -- */
+header {
+    background: var(--bg-light);
+    padding: 15px 0;
+    border-bottom: 3px solid var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* This is the critical line that makes the menu horizontal */
+    align-items: center;
+}
+
+.nav-links li {
+    padding: 0 15px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* -- Hamburger Menu for Mobile (Hidden on Desktop) -- */
+.hamburger {
+    display: none; /* This correctly hides the hamburger on desktop */
+    cursor: pointer;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* -- Hero Section -- */
+.showcase {
+    min-height: 85vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070') center/cover no-repeat;
+}
+
+.showcase h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.showcase p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+}
+
+/* -- Main Content & Cards -- */
+main {
+    padding: 60px 0;
+}
+
+h1.page-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.service-box, .job-opening {
+    background: var(--bg-light);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover, .job-opening:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 209, 178, 0.2);
+}
+
+/* -- Buttons -- */
+.button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--text-dark);
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* -- Scroll Animation Effect -- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -- Footer -- */
+footer {
+    padding: 20px;
+    color: #ffffff;
+    background-color: var(--bg-light);
+    text-align: center;
+    border-top: 3px solid var(--primary-color);
+}
+
+/* -- Responsive Design for Mobile -- */
+@media(max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide by default on mobile */
+        flex-direction: column; /* Stack them vertically */
+        width: 100%;
+        background-color: var(--bg-light);
+        position: absolute;
+        top: 74px; /* Height of header */
+        left: 0;
+        text-align: center;
+    }
+
+    /* This class is toggled by JavaScript */
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+    }
+
+    .hamburger {
+        display: flex; /* Show the hamburger icon on mobile */
+    }
+
+    /* Animate hamburger into an 'X' */
+    .hamburger.toggle .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.toggle .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    .showcase h1 {
+        font-size: 2.5rem;
+    }
+}
